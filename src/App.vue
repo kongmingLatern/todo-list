@@ -1,9 +1,9 @@
 <template>
-  <Home />
+  <Header />
 </template>
 
 <script setup lang="ts">
-import Home from '@/views/Home.vue'
+import Header from '@/views/Header.vue'
 </script>
 
 <style>
