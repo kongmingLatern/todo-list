@@ -1,7 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import Header from '@/views/Header/Header.vue'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let wrapper: any = null
 let input: any = null
 
