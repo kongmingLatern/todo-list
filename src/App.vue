@@ -1,6 +1,10 @@
 <template>
-  <h1>App</h1>
+  <Home />
 </template>
+
+<script setup lang="ts">
+import Home from '@/views/Home.vue'
+</script>
 
 <style>
 </style>
