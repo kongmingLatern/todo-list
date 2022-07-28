@@ -1,5 +1,5 @@
 <template>
-  <input data-test="input" :value="inputValue" />
+  <input data-test="input" v-model="inputValue" />
 </template>
 
 <script setup lang='ts'>
