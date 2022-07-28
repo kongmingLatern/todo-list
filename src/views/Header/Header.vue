@@ -3,16 +3,17 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, defineEmits, Ref } from 'vue'
+import { ref, defineEmits } from 'vue'
 const inputValue = ref<string>('')
 
 const emit = defineEmits<{
-  (e: 'add', value: Ref<string>): void
+  (e: 'add', value: string): void
 }>()
 
 const addTodoItem = () => {
   if (inputValue.value) {
-    emit('add', inputValue)
+    emit('add', inputValue.value)
+    inputValue.value = ''
   }
 }
 </script>

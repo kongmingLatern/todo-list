@@ -4,10 +4,12 @@ import Header from '@/views/Header/Header.vue'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let wrapper: any = null
 let input: any = null
+
 beforeAll(() => {
   wrapper = shallowMount(Header)
   input = wrapper.find('[data-test="input"]')
 })
+
 describe('input', () => {
   // 首先确保有这个 input 元素
   it('we should have a input DOM', () => {
@@ -41,10 +43,10 @@ describe('input', () => {
 
   // 如果输入有内容，并且输入回车，则触发 emit 事件，同时清空 inputValue
   it('we should trigger emit and then clear inputValue when user input key is pressed', () => {
-    // 输入空内容
+    const value = wrapper.get('input').wrapperElement.value
     input.setValue('anything')
-    // 然后输入回车
     input.trigger('keyup.enter')
     expect(wrapper.emitted().add).toBeTruthy()
+    expect(value).toBe('')
   })
 })
