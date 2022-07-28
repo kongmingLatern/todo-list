@@ -1,10 +1,20 @@
 <template>
-  <input data-test="input" v-model="inputValue" />
+  <input data-test="input" v-model="inputValue" @keyup.enter="addTodoItem" />
 </template>
 
 <script setup lang='ts'>
-import { ref } from 'vue'
+import { ref, defineEmits, Ref } from 'vue'
 const inputValue = ref<string>('')
+
+const emit = defineEmits<{
+  (e: 'add', value: Ref<string>): void
+}>()
+
+const addTodoItem = () => {
+  if (inputValue.value) {
+    emit('add', inputValue)
+  }
+}
 </script>
 
 <style>

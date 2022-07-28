@@ -27,7 +27,24 @@ describe('input', () => {
     input.setValue('this is test value')
     // 获取到用户输入的数据
     const value = wrapper.get('input').wrapperElement.value
-    // 测试是否有双向绑定的功能
     expect(value).toBe('this is test value')
+  })
+
+  // 当用户没有输入内容时输入回车，则不需要做任何操作
+  it("we should't do anything when user just input keyEnter", () => {
+    // 输入空内容
+    input.setValue('')
+    // 然后输入回车
+    input.trigger('keyup.enter')
+    expect(wrapper.emitted().add).toBeFalsy()
+  })
+
+  // 如果输入有内容，并且输入回车，则触发 emit 事件，同时清空 inputValue
+  it('we should trigger emit and then clear inputValue when user input key is pressed', () => {
+    // 输入空内容
+    input.setValue('anything')
+    // 然后输入回车
+    input.trigger('keyup.enter')
+    expect(wrapper.emitted().add).toBeTruthy()
   })
 })
