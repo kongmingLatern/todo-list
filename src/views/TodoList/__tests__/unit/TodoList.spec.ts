@@ -30,8 +30,8 @@ describe('emit', () => {
   // send emit event
   it('we should trigger emit event when user input keyup', () => {
     const header = wrapper.findComponent(Header)
-    header.vm.$emit('add', 'one thing')
     const { undoList } = setupState
+    header.vm.$emit('add', 'one thing')
     expect(undoList).toEqual(['one thing'])
   })
 
