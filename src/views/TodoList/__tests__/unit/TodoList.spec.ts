@@ -1,11 +1,12 @@
 import { mount } from '@vue/test-utils'
 import TodoList from '@/views/TodoList/TodoList.vue'
+import Header from '@/views/Header/Header.vue'
 
 let wrapper: any = null
 let todoList: any = null
 let setupState: Record<string, any> = {}
 
-beforeAll(() => {
+beforeEach(() => {
   wrapper = mount(TodoList)
   todoList = wrapper.get('ul')
   setupState = wrapper.vm.$.setupState
@@ -16,7 +17,7 @@ describe('TodoList test', () => {
     expect(todoList).toBeTruthy()
   })
   it('we should have no element before user input', () => {
-    const el = wrapper.get('ul').wrapperElement
+    const el = todoList.wrapperElement
     expect(el.children.length).toBe(0)
   })
   it('we should have a reactive variable and its value should be a empty array', () => {
@@ -26,6 +27,14 @@ describe('TodoList test', () => {
 })
 
 describe('emit', () => {
+  // send emit event
+  it('we should trigger emit event when user input keyup', () => {
+    const header = wrapper.findComponent(Header)
+    header.vm.$emit('add', 'one thing')
+    const { undoList } = setupState
+    expect(undoList).toEqual(['one thing'])
+  })
+
   // use emit by function
   it('we should add an active after user input something', () => {
     const { undoList, addUndoList } = setupState
