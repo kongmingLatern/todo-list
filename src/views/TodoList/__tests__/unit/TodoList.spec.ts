@@ -1,4 +1,3 @@
-
 import { shallowMount } from '@vue/test-utils'
 import TodoList from '@/views/TodoList/TodoList.vue'
 
@@ -20,8 +19,13 @@ describe('TodoList test', () => {
     const el = wrapper.get('ul').wrapperElement
     expect(el.children.length).toBe(0)
   })
-  it('we should have a reactive variable', () => {
+  it('we should have a reactive variable and its value should be a empty array', () => {
     const { undoList } = setupState
     expect(undoList).toEqual([])
+  })
+  it('we should add an active after user input something', () => {
+    const { undoList, addUndoList } = setupState
+    addUndoList('active1')
+    expect(undoList).toEqual(['active1'])
   })
 })
