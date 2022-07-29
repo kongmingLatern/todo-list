@@ -11,7 +11,7 @@ beforeAll(() => {
 
 describe('input', () => {
   // 首先确保有这个 input 元素
-  it('we should have a input DOM', () => {
+  it('we should have a input Element', () => {
     expect(input.exists()).toBe(true)
   })
 
