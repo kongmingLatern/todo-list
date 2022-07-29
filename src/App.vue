@@ -1,9 +1,9 @@
 <template>
-  <Header />
+  <TodoList></TodoList>
 </template>
 
 <script setup lang="ts">
-import Header from '@/views/Header/Header.vue'
+import TodoList from './views/TodoList/TodoList.vue'
 </script>
 
 <style>
