@@ -46,6 +46,7 @@ describe('input', () => {
     input.setValue('anything')
     input.trigger('keyup.enter')
     expect(wrapper.emitted().add).toBeTruthy()
+    expect(wrapper.emitted('add')[0]).toEqual(['anything'])
     expect(value).toBe('')
   })
 })
