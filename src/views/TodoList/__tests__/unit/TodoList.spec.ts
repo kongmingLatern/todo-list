@@ -13,4 +13,7 @@ describe('TodoList test', () => {
   it('we should render it correctly', () => {
     expect(todoList).toBeTruthy()
   })
+  it('we should render it correctly', () => {
+    expect(todoList).toBeTruthy()
+  })
 })
