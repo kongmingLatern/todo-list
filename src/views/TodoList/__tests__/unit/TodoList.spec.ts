@@ -1,14 +1,13 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import TodoList from '@/views/TodoList/TodoList.vue'
-import Header from '@/views/Header/Header.vue'
 
 let wrapper: any = null
 let todoList: any = null
 let setupState: Record<string, any> = {}
 
 beforeAll(() => {
-  wrapper = shallowMount(TodoList)
-  todoList = wrapper.find('[data-test="todoList"]')
+  wrapper = mount(TodoList)
+  todoList = wrapper.get('ul')
   setupState = wrapper.vm.$.setupState
 })
 
@@ -27,14 +26,6 @@ describe('TodoList test', () => {
 })
 
 describe('emit', () => {
-  // use emit
-  it('we should add an active when we emit an event', () => {
-    const header = shallowMount(Header)
-    const { undoList } = setupState
-    // send an emit event
-    header.vm.$emit('add', 'active')
-    expect(undoList).toEqual(['active1'])
-  })
   // use emit by function
   it('we should add an active after user input something', () => {
     const { undoList, addUndoList } = setupState
