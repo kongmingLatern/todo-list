@@ -13,7 +13,8 @@ describe('TodoList test', () => {
   it('we should render it correctly', () => {
     expect(todoList).toBeTruthy()
   })
-  it('we should render it correctly', () => {
-    expect(todoList).toBeTruthy()
+  it('we should have no element before user input', () => {
+    const el = wrapper.get('ul').wrapperElement
+    expect(el.children.length).toBe(0)
   })
 })

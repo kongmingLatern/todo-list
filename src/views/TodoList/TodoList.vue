@@ -1,16 +1,16 @@
 <template>
-  <Header @add="addList" />
+  <Header @add="addUndoList" />
   <ul data-test="todoList">
-    <li v-for="item in list" :key="item">{{ item }}</li>
+    <li v-for="item in undoList" :key="item">{{ item }}</li>
   </ul>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue'
 import Header from '@/views/Header/Header.vue'
-const list: string[] = reactive([])
-const addList = (str: string) => {
-  list.push(str)
+const undoList: string[] = reactive([])
+const addUndoList = (str: string) => {
+  undoList.push(str)
 }
 </script>
 
