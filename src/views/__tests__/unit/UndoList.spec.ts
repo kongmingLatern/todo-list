@@ -49,4 +49,17 @@ describe('UndoList', () => {
     expect(listItems.length).toBe(3)
     expect(deleteBtns.length).toBe(3)
   })
+  it('UndoList 删除按钮被点击时，对外需要触发删除事件', () => {
+    const wrapper = mount(UndoList, {
+      props: {
+        undoList: [1, 2, 3]
+      }
+    })
+
+    // add => 触发 trigger event
+    const deleteButton = findTestWrapper(wrapper, 'delete-button').at(1)
+    deleteButton.trigger('click')
+
+    expect(wrapper.emitted().delete).toBeTruthy()
+  })
 })
