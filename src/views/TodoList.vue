@@ -5,7 +5,7 @@
     <li v-for="item in undoList" :key="item">{{ item }}</li>
   </ul>
   <h3>已结束的活动</h3>
-  <UndoList :undoList="undoList"/>
+  <UndoList :undoList="undoList" @delete="deleteItem"/>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +17,10 @@ const undoList: string[] = reactive([])
 
 const addUndoList = (str: string) => {
   undoList.push(str)
+}
+
+const deleteItem = (num: number) => {
+  return undoList.filter((item) => item !== undoList[num])
 }
 
 </script>

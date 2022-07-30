@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import TodoList from '@/views/TodoList.vue'
 import Header from '@/views/Header.vue'
+import UndoList from '@/views/UndoList.vue'
 
 let wrapper: any = null
 let todoList: any = null
@@ -40,5 +41,12 @@ describe('emit', () => {
     const { undoList, addUndoList } = setupState
     addUndoList('active1')
     expect(undoList).toEqual(['active1'])
+  })
+
+  // UndoList
+  it('we should trigger emit event when user click delete button', () => {
+    const undo = wrapper.findComponent(UndoList)
+    const list = undo.props('undoList')
+    expect(list).toBeTruthy()
   })
 })
