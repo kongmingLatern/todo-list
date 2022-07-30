@@ -7,16 +7,27 @@
      data-test="list"
      >{{ item }}
 
-     <span data-test="delete-button">delete</span>
+     <span
+     data-test="delete-button"
+     @click="deleteItem(item)"
+     >delete</span>
      </li>
   </ul>
 </template>
 
 <script setup lang='ts'>
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 defineProps<{
   undoList: Array<string>
 }>()
+
+const emit = defineEmits<{
+  (e: 'delete', value: string): void
+}>()
+
+const deleteItem = (item: string) => {
+  emit('delete', item)
+}
 
 </script>
 
