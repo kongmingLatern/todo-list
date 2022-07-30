@@ -2,7 +2,7 @@ import UndoList from '@/views/UndoList.vue'
 import { mount } from '@vue/test-utils'
 
 describe('UndoList', () => {
-  it('UndoList args should be []', () => {
+  it('UndoList args should be [], count shoule be 0, list length should be 0 too', () => {
     const wrapper = mount(UndoList, {
       props: {
         undoList: []
@@ -13,7 +13,7 @@ describe('UndoList', () => {
     const listItems = wrapper.findAll('[data-test="list"]')
 
     expect(wrapper.html()).toContain([])
-    expect(countElem[0].text()).toEqual('0')
-    expect(listItems.length).toEqual(0)
+    expect(Number.parseInt(countElem[0].text())).toBe(0)
+    expect(listItems.length).toBe(0)
   })
 })
