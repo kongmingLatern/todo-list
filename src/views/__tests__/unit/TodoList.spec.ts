@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils'
 import TodoList from '@/views/TodoList.vue'
 import Header from '@/views/Header.vue'
 import UndoList from '@/views/UndoList.vue'
-import { findTestWrapper } from '@/utils'
 
 let wrapper: any = null
 let todoList: any = null
