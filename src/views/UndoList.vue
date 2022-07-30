@@ -2,14 +2,14 @@
   <div data-test="count">{{ undoList.length }}</div>
   <ul data-test="todoList">
     <li
-     v-for="item in undoList"
+     v-for="(item, key) in undoList"
      :key="item"
      data-test="list"
      >{{ item }}
 
      <span
      data-test="delete-button"
-     @click="deleteItem(item)"
+     @click="deleteItem(key)"
      >delete</span>
      </li>
   </ul>
@@ -22,11 +22,11 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'delete', value: string): void
+  (e: 'delete', value: number): void
 }>()
 
-const deleteItem = (item: string) => {
-  emit('delete', item)
+const deleteItem = (num: number) => {
+  emit('delete', num)
 }
 
 </script>
