@@ -42,9 +42,3 @@ describe('emit', () => {
     expect(undoList).toEqual(['active1'])
   })
 })
-
-// describe('test button click', () => {
-//   it('add button and bing click event ', () => {
-
-//   })
-// })

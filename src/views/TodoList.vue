@@ -14,6 +14,7 @@ import Header from '@/views/Header.vue'
 import UndoList from '@/views/UndoList.vue'
 
 const undoList: string[] = reactive([])
+
 const addUndoList = (str: string) => {
   undoList.push(str)
 }
