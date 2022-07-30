@@ -9,6 +9,13 @@ beforeAll(() => {
   input = wrapper.find('[data-test="input"]')
 })
 
+describe('notice', () => {
+  it('we should notice when developer changed something', () => {
+    const wrapper = shallowMount(Header)
+    expect(wrapper).toMatchSnapshot()
+  })
+})
+
 describe('input', () => {
   // 首先确保有这个 input 元素
   it('we should have a input Element', () => {
