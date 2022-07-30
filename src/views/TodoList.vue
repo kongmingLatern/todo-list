@@ -5,7 +5,7 @@
     <li v-for="item in undoList" :key="item">{{ item }}</li>
   </ul>
   <h3>已结束的活动</h3>
-  <UndoList/>
+  <UndoList :undoList="undoList"/>
 </template>
 
 <script setup lang="ts">
