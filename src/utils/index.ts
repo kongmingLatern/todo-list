@@ -1,3 +1,3 @@
-export default function findWrapper(wrapper: any, tag: string) {
-  return wrapper.find(`[data-test=${tag}]`)
+export const findTestWrapper = (wrapper: any, tag: string) => {
+  return wrapper.findAll(`[data-test="${tag}"]`)
 }
