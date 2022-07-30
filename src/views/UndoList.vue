@@ -5,7 +5,10 @@
      v-for="item in undoList"
      :key="item"
      data-test="list"
-     >{{ item }}</li>
+     >{{ item }}
+
+     <span data-test="delete-button">delete</span>
+     </li>
   </ul>
 </template>
 
