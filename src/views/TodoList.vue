@@ -20,7 +20,7 @@ const addUndoList = (str: string) => {
 }
 
 const deleteItem = (num: number) => {
-  return undoList.filter((item) => item !== undoList[num])
+  return undoList.splice(num, 1)
 }
 
 </script>

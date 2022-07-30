@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import TodoList from '@/views/TodoList.vue'
 import Header from '@/views/Header.vue'
 import UndoList from '@/views/UndoList.vue'
+import { findTestWrapper } from '@/utils'
 
 let wrapper: any = null
 let todoList: any = null
@@ -48,5 +49,11 @@ describe('emit', () => {
     const undo = wrapper.findComponent(UndoList)
     const list = undo.props('undoList')
     expect(list).toBeTruthy()
+  })
+  it('TodoList 中 deleteItem 执行后，UndoList 的内容会相应减少一个', async () => {
+    const { undoList, deleteItem } = setupState
+    undoList.push(1, 2, 3)
+    deleteItem(1)
+    expect(undoList).toEqual([1, 3])
   })
 })
