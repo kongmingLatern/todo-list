@@ -2,14 +2,16 @@ import { mount } from '@vue/test-utils'
 import { findTestWrapper } from '@/utils'
 import UndoList from '@/views/UndoList.vue'
 
+let wrapper: any = null
+beforeEach(() => {
+  wrapper = mount(UndoList, {
+    props: {
+      undoList: []
+    }
+  })
+})
 describe('UndoList', () => {
   it('UndoList args should be [], count shoule be 0, list length should be 0 too', () => {
-    const wrapper = mount(UndoList, {
-      props: {
-        undoList: []
-      }
-    })
-
     const countElem = wrapper.findAll('[data-test="count"]')
     const listItems = wrapper.findAll('[data-test="list"]')
 
@@ -18,7 +20,7 @@ describe('UndoList', () => {
     expect(listItems.length).toBe(0)
   })
   it('UndoList 参数为[1, 2, 3], count 的值应该为 3，且列表有内容', () => {
-    const wrapper = mount(UndoList, {
+    wrapper = mount(UndoList, {
       props: {
         undoList: [1, 2, 3]
       }
@@ -32,7 +34,7 @@ describe('UndoList', () => {
     expect(listItems.length).toBe(3)
   })
   it('UndoList 参数为[1, 2, 3], count 的值应该为 3，且列表有内容, 且存在删除按钮', () => {
-    const wrapper = mount(UndoList, {
+    wrapper = mount(UndoList, {
       props: {
         undoList: [1, 2, 3]
       }
@@ -50,7 +52,7 @@ describe('UndoList', () => {
     expect(deleteBtns.length).toBe(3)
   })
   it('UndoList 删除按钮被点击时，对外需要触发删除事件', () => {
-    const wrapper = mount(UndoList, {
+    wrapper = mount(UndoList, {
       props: {
         undoList: [1, 2, 3]
       }
