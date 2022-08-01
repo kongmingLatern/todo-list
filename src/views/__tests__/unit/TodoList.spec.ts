@@ -1,9 +1,10 @@
 import { mount } from '@vue/test-utils'
+import type { VueWrapper } from '@vue/test-utils'
 import TodoList from '@/views/TodoList.vue'
 import Header from '@/views/Header.vue'
 import UndoList from '@/views/UndoList.vue'
 
-let wrapper: any = null
+let wrapper: VueWrapper | null = null
 let todoList: any = null
 let setupState: Record<string, any> = {}
 
