@@ -20,7 +20,7 @@ describe('UndoList', () => {
     expect(listItems.length).toBe(0)
   })
   it('UndoList 参数为[1, 2, 3], count 的值应该为 3，且列表有内容', () => {
-    wrapper = mount(UndoList, {
+    wrapper = mount(UndoList as any, {
       props: {
         undoList: [1, 2, 3]
       }
@@ -34,7 +34,7 @@ describe('UndoList', () => {
     expect(listItems.length).toBe(3)
   })
   it('UndoList 参数为[1, 2, 3], count 的值应该为 3，且列表有内容, 且存在删除按钮', () => {
-    wrapper = mount(UndoList, {
+    wrapper = mount(UndoList as any, {
       props: {
         undoList: [1, 2, 3]
       }
@@ -52,7 +52,7 @@ describe('UndoList', () => {
     expect(deleteBtns.length).toBe(3)
   })
   it('UndoList 删除按钮被点击时，对外需要触发删除事件', () => {
-    wrapper = mount(UndoList, {
+    wrapper = mount(UndoList as any, {
       props: {
         undoList: [1, 2, 3]
       }

@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import type { VueWrapper } from '@vue/test-utils'
+import type { VueWrapper, BaseWrapper } from '@vue/test-utils'
 import TodoList from '@/views/TodoList.vue'
 import Header from '@/views/Header.vue'
 import UndoList from '@/views/UndoList.vue'
 
-let wrapper: VueWrapper | null = null
-let todoList: any = null
+let wrapper: VueWrapper<any>
+let todoList: BaseWrapper<any> & any
 let setupState: Record<string, any> = {}
 
 beforeEach(() => {
