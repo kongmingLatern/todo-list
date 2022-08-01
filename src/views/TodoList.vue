@@ -1,9 +1,7 @@
 <template>
   <Header @add="addUndoList" />
   <h3 class="title loading">正在进行中的活动</h3>
-  <ul data-test="todoList" class="ul-container">
-    <li v-for="item in undoList" :key="item">{{ item }}</li>
-  </ul>
+  <UndoList :undoList="undoList" @delete="deleteItem"/>
   <h3 class="title ending">已结束的活动</h3>
   <UndoList :undoList="undoList" @delete="deleteItem"/>
 </template>
