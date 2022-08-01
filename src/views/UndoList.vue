@@ -10,7 +10,8 @@
      <span
      data-test="delete-button"
      @click="deleteItem(key)"
-     >delete</span>
+     class="right hover"
+     >delete this</span>
      </li>
   </ul>
 </template>
@@ -45,5 +46,11 @@ const deleteItem = (num: number) => {
   font-weight: 700;
   text-align: left;
   color: #2369ff;
+}
+.right {
+  float: right;
+}
+.right:hover {
+  color: red;
 }
 </style>
