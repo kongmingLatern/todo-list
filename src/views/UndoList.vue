@@ -5,8 +5,10 @@
      v-for="(item, key) in undoList"
      :key="item"
      data-test="list"
-     >{{ item }}
-
+     class="mt-10 bb-3 h-50"
+     >
+    <span class="br-3">{{ key + 1 }}</span>
+    <span>{{ item }}</span>
      <span
      data-test="delete-button"
      @click="deleteItem(key)"
@@ -52,5 +54,26 @@ const deleteItem = (num: number) => {
 }
 .right:hover {
   color: red;
+}
+.mt-10 {
+  margin-top: 20px;
+}
+.bb-3 {
+  border: 1px solid #ccc;
+}
+.h-50 {
+  height: 20px;
+  line-height: 20px;
+  padding: 10px;
+}
+li {
+  list-style: none;
+}
+.br-3 {
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  border-right: 1px solid #000;
+  margin-right: 10px;
 }
 </style>
