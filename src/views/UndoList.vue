@@ -1,6 +1,6 @@
 <template>
-  <div data-test="count">{{ undoList.length }}</div>
-  <ul data-test="todoList">
+  <div data-test="count" class="number m0">还剩 {{ undoList.length }} 件</div>
+  <ul data-test="todoList" class="ul-container m0">
     <li
      v-for="(item, key) in undoList"
      :key="item"
@@ -31,6 +31,19 @@ const deleteItem = (num: number) => {
 
 </script>
 
-<style>
+<style lang="less" scoped>
+.m0 {
+  margin: 0 auto;
+}
 
+.ul-container {
+  width: 700px;
+}
+.number {
+  width: 700px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-align: left;
+  color: #2369ff;
+}
 </style>
