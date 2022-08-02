@@ -10,11 +10,13 @@
 import { reactive } from 'vue'
 import Header from '@/views/Header.vue'
 import UndoList from '@/views/UndoList.vue'
+
 interface UndoListType {
   status?: string,
   value?: string
 }
-let undoList: UndoListType[] = reactive([])
+
+const undoList: UndoListType[] = reactive([])
 
 const addUndoList = (str: string) => {
   undoList.push({
@@ -24,22 +26,13 @@ const addUndoList = (str: string) => {
 }
 
 const handleStatus = (num: number) => {
-  const newList:UndoListType[] = []
-  undoList.forEach((item, key) => {
+  undoList.map((item, key) => {
     if (key === num) {
-      newList.push({
-        status: 'input',
-        value: item.value
-      })
+      item.status = 'input'
     } else {
-      newList.push({
-        status: 'div',
-        value: item.value
-      })
+      item.status = 'div'
     }
   })
-  undoList = newList
-
   return undoList
 }
 
