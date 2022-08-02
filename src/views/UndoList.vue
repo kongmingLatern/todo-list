@@ -34,8 +34,7 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'delete', value: number): void,
-  (e: 'changeStatus', value: number): void,
+  (e: string, value: number): void,
 }>()
 
 const deleteItem = (num: number) => {
