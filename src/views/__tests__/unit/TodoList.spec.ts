@@ -22,10 +22,6 @@ describe('TodoList test', () => {
     const el = todoList.wrapperElement
     expect(el.children.length).toBe(0)
   })
-  it('we should have a reactive variable and its value should be a empty array', () => {
-    const { undoList } = setupState
-    expect(undoList).toEqual([])
-  })
 })
 
 describe('emit', () => {
@@ -34,14 +30,20 @@ describe('emit', () => {
     const header = wrapper.findComponent(Header)
     const { undoList } = setupState
     header.vm.$emit('add', 'one thing')
-    expect(undoList).toEqual(['one thing'])
+    expect(undoList).toEqual([{
+      status: 'div',
+      value: 'one thing'
+    }])
   })
 
   // use emit by function
   it('we should add an active after user input something', () => {
     const { undoList, addUndoList } = setupState
     addUndoList('active1')
-    expect(undoList).toEqual(['active1'])
+    expect(undoList).toEqual([{
+      status: 'div',
+      value: 'active1'
+    }])
   })
 
   // UndoList
@@ -52,8 +54,23 @@ describe('emit', () => {
   })
   it('TodoList 中 deleteItem 执行后，UndoList 的内容会相应减少一个', async () => {
     const { undoList, deleteItem } = setupState
-    undoList.push(1, 2, 3)
+    undoList.push({
+      status: 'div',
+      value: 1
+    }, {
+      status: 'div',
+      value: 2
+    }, {
+      status: 'div',
+      value: 3
+    })
     deleteItem(1)
-    expect(undoList).toEqual([1, 3])
+    expect(undoList).toEqual([{
+      status: 'div',
+      value: 1
+    }, {
+      status: 'div',
+      value: 3
+    }])
   })
 })

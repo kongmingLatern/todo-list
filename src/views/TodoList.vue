@@ -3,18 +3,24 @@
   <h3 class="title loading">正在进行中的活动</h3>
   <UndoList :undoList="undoList" @delete="deleteItem"/>
   <h3 class="title ending">已结束的活动</h3>
-  <UndoList :undoList="undoList" @delete="deleteItem"/>
+  <!-- <UndoList :undoList="undoList" @delete="deleteItem"/> -->
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue'
 import Header from '@/views/Header.vue'
 import UndoList from '@/views/UndoList.vue'
-
-const undoList: string[] = reactive([])
+interface UndoListType {
+  status?: string,
+  value?: string
+}
+const undoList: UndoListType[] = reactive([])
 
 const addUndoList = (str: string) => {
-  undoList.push(str)
+  undoList.push({
+    status: 'div',
+    value: str
+  })
 }
 
 const deleteItem = (num: number) => {

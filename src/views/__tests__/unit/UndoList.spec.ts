@@ -22,7 +22,16 @@ describe('UndoList', () => {
   it('UndoList 参数为[1, 2, 3], count 的值应该为 3，且列表有内容', () => {
     wrapper = mount(UndoList as any, {
       props: {
-        undoList: [1, 2, 3]
+        undoList: [{
+          status: 'div',
+          value: 1
+        }, {
+          status: 'div',
+          value: 2
+        }, {
+          status: 'div',
+          value: 3
+        }]
       }
     })
 
@@ -30,13 +39,23 @@ describe('UndoList', () => {
     const listItems = findTestWrapper(wrapper, 'list')
 
     expect(wrapper.html()).toContain([])
+    console.log(countElem[0].text())
     expect(Number.parseInt(countElem[0].text())).toBe(3)
     expect(listItems.length).toBe(3)
   })
   it('UndoList 参数为[1, 2, 3], count 的值应该为 3，且列表有内容, 且存在删除按钮', () => {
     wrapper = mount(UndoList as any, {
       props: {
-        undoList: [1, 2, 3]
+        undoList: [{
+          status: 'div',
+          value: 1
+        }, {
+          status: 'div',
+          value: 2
+        }, {
+          status: 'div',
+          value: 3
+        }]
       }
     })
 
@@ -54,7 +73,16 @@ describe('UndoList', () => {
   it('UndoList 删除按钮被点击时，对外需要触发删除事件', () => {
     wrapper = mount(UndoList as any, {
       props: {
-        undoList: [1, 2, 3]
+        undoList: [{
+          status: 'div',
+          value: 1
+        }, {
+          status: 'div',
+          value: 2
+        }, {
+          status: 'div',
+          value: 3
+        }]
       }
     })
 

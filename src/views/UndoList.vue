@@ -7,12 +7,12 @@
   <ul data-test="todoList" class="ul-container m0">
     <li
      v-for="(item, key) in undoList"
-     :key="item"
+     :key="item.status"
      data-test="list"
      class="mt-10 bb-3 h-50"
      >
     <span class="br-3">{{ key + 1 }}</span>
-    <span>{{ item }}</span>
+    <span>{{ item.value }}</span>
      <span
      data-test="delete-button"
      @click="deleteItem(key)"
@@ -24,8 +24,12 @@
 
 <script setup lang='ts'>
 import { defineProps, defineEmits } from 'vue'
+interface UndoListType {
+  status?: string,
+  value?: string
+}
 defineProps<{
-  undoList: Array<string>
+  undoList: UndoListType[]
 }>()
 
 const emit = defineEmits<{
