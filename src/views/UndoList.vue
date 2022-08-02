@@ -13,7 +13,8 @@
      class="mt-10 bb-3 h-50"
      >
     <span class="br-3">{{ key + 1 }}</span>
-    <span>{{ item.value }}</span>
+    <input data-test="input"  v-if="item.status === 'input'" :value="item.value"/>
+    <span v-else>{{ item.value }}</span>
      <span
      data-test="delete-button"
      @click="deleteItem(key)"
@@ -33,16 +34,17 @@ defineProps<{
   undoList: UndoListType[]
 }>()
 
-const emit = defineEmits<{
-  (e: string, value: number): void,
+const emits = defineEmits<{
+  (e: 'delete', value: number): void,
+  (e: 'changeStatus', value: number): void,
 }>()
 
 const deleteItem = (num: number) => {
-  emit('delete', num)
+  emits('delete', num)
 }
 
 const changeStatus = (num: number) => {
-  emit('changeStatus', num)
+  emits('changeStatus', num)
 }
 
 </script>
