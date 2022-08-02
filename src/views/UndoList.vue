@@ -1,5 +1,9 @@
 <template>
-  <div data-test="count" class="number m0">还剩 {{ undoList.length }} 件</div>
+  <div  class="number m0">
+    还剩
+   <span data-test="count">{{ undoList.length }}</span>
+     件
+    </div>
   <ul data-test="todoList" class="ul-container m0">
     <li
      v-for="(item, key) in undoList"
