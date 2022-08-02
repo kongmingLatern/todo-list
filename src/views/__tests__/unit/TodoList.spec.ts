@@ -73,4 +73,34 @@ describe('emit', () => {
       value: 3
     }])
   })
+
+  it('TodoList 当 触发 changeStatus 事件的时候 去 执行 changeStatus', () => {
+    const undo = mount(UndoList, {
+      props: {
+        undoList: []
+      }
+    })
+    const { undoList } = setupState
+    undoList.push({
+      status: 'div',
+      value: 1
+    }, {
+      status: 'div',
+      value: 2
+    }, {
+      status: 'div',
+      value: 3
+    })
+    undo.emitted('changeStatus')
+    expect(undoList).toEqual([{
+      status: 'div',
+      value: 1
+    }, {
+      status: 'input',
+      value: 2
+    }, {
+      status: 'div',
+      value: 3
+    }])
+  })
 })
