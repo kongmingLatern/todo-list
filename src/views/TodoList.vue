@@ -1,7 +1,7 @@
 <template>
   <Header @add="addUndoList" />
   <h3 class="title loading">正在进行中的活动</h3>
-  <UndoList :undoList="undoList" @delete="deleteItem"/>
+  <UndoList :undoList="undoList" @delete="deleteItem" @changeStatus="changeStatus"/>
   <h3 class="title ending">已结束的活动</h3>
   <!-- <UndoList :undoList="undoList" @delete="deleteItem"/> -->
 </template>
@@ -20,6 +20,16 @@ const addUndoList = (str: string) => {
   undoList.push({
     status: 'div',
     value: str
+  })
+}
+
+const changeStatus = (num: number) => {
+  return undoList.map((item, key) => {
+    if (key === num) {
+      item.status = 'input'
+    } else {
+      item.status = 'div'
+    }
   })
 }
 
