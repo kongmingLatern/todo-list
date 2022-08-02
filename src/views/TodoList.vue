@@ -1,7 +1,7 @@
 <template>
   <Header @add="addUndoList" />
   <h3 class="title loading">正在进行中的活动</h3>
-  <UndoList :undoList="undoList" @delete="deleteItem" @changeStatus="changeStatus"/>
+  <UndoList :undoList="undoList" @delete="deleteItem" @changeStatus="handleStatus"/>
   <h3 class="title ending">已结束的活动</h3>
   <!-- <UndoList :undoList="undoList" @delete="deleteItem"/> -->
 </template>
@@ -14,7 +14,7 @@ interface UndoListType {
   status?: string,
   value?: string
 }
-const undoList: UndoListType[] = reactive([])
+let undoList: UndoListType[] = reactive([])
 
 const addUndoList = (str: string) => {
   undoList.push({
@@ -23,14 +23,24 @@ const addUndoList = (str: string) => {
   })
 }
 
-const changeStatus = (num: number) => {
-  return undoList.map((item, key) => {
+const handleStatus = (num: number) => {
+  const newList:UndoListType[] = []
+  undoList.forEach((item, key) => {
     if (key === num) {
-      item.status = 'input'
+      newList.push({
+        status: 'input',
+        value: item.value
+      })
     } else {
-      item.status = 'div'
+      newList.push({
+        status: 'div',
+        value: item.value
+      })
     }
   })
+  undoList = newList
+
+  return undoList
 }
 
 const deleteItem = (num: number) => {
