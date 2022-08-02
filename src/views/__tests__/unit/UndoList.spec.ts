@@ -19,7 +19,7 @@ describe('UndoList', () => {
     expect(Number.parseInt(countElem[0].text())).toBe(0)
     expect(listItems.length).toBe(0)
   })
-  it('UndoList 参数为[1, 2, 3], count 的值应该为 3，且列表有内容', () => {
+  it('UndoList 参数为[{...}], count 的值应该为 3，且列表有内容', () => {
     wrapper = mount(UndoList as any, {
       props: {
         undoList: [{
@@ -43,7 +43,7 @@ describe('UndoList', () => {
     expect(Number.parseInt(countElem[0].text())).toBe(3)
     expect(listItems.length).toBe(3)
   })
-  it('UndoList 参数为[1, 2, 3], count 的值应该为 3，且列表有内容, 且存在删除按钮', () => {
+  it('UndoList 参数为[{...}], count 的值应该为 3，且列表有内容, 且存在删除按钮', () => {
     wrapper = mount(UndoList as any, {
       props: {
         undoList: [{
@@ -91,5 +91,10 @@ describe('UndoList', () => {
     deleteButton.trigger('click')
 
     expect(wrapper.emitted().delete).toBeTruthy()
+  })
+  it('UndoList 中的 li 按钮被点击时，对外需要触发changeStatus事件', () => {
+    const li = findTestWrapper(wrapper, 'list')
+    li.trigger('click')
+    expect(wrapper.emitted('changeStatus')).toBeTruthy()
   })
 })
