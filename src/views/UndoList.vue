@@ -6,9 +6,10 @@
     </div>
   <ul data-test="todoList" class="ul-container m0">
     <li
+     data-test="list"
      v-for="(item, key) in undoList"
      :key="item.status"
-     data-test="list"
+     @click="changeStatus(key)"
      class="mt-10 bb-3 h-50"
      >
     <span class="br-3">{{ key + 1 }}</span>
@@ -33,11 +34,16 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'delete', value: number): void
+  (e: 'delete', value: number): void,
+  (e: 'changeStatus', value: number): void,
 }>()
 
 const deleteItem = (num: number) => {
   emit('delete', num)
+}
+
+const changeStatus = (num: number) => {
+  emit('changeStatus', num)
 }
 
 </script>

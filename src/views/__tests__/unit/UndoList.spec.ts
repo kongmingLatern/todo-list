@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils'
+import { mount, VueWrapper } from '@vue/test-utils'
 import { findTestWrapper } from '@/utils'
 import UndoList from '@/views/UndoList.vue'
 
-let wrapper: any = null
+let wrapper: VueWrapper<any>
 beforeEach(() => {
   wrapper = mount(UndoList, {
     props: {
@@ -39,7 +39,6 @@ describe('UndoList', () => {
     const listItems = findTestWrapper(wrapper, 'list')
 
     expect(wrapper.html()).toContain([])
-    console.log(countElem[0].text())
     expect(Number.parseInt(countElem[0].text())).toBe(3)
     expect(listItems.length).toBe(3)
   })
@@ -87,14 +86,27 @@ describe('UndoList', () => {
     })
 
     // add => 触发 trigger event
-    const deleteButton = findTestWrapper(wrapper, 'delete-button').at(1)
+    const deleteButton: any = findTestWrapper(wrapper, 'delete-button').at(1)
     deleteButton.trigger('click')
-
     expect(wrapper.emitted().delete).toBeTruthy()
   })
   it('UndoList 中的 li 按钮被点击时，对外需要触发changeStatus事件', () => {
-    const li = findTestWrapper(wrapper, 'list')
-    li.trigger('click')
+    wrapper = mount(UndoList as any, {
+      props: {
+        undoList: [{
+          status: 'div',
+          value: 1
+        }, {
+          status: 'div',
+          value: 2
+        }, {
+          status: 'div',
+          value: 3
+        }]
+      }
+    })
+    const list = wrapper.find('[data-test="list"]')
+    list.trigger('click')
     expect(wrapper.emitted('changeStatus')).toBeTruthy()
   })
 })
