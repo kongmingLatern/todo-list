@@ -128,4 +128,24 @@ describe('UndoList', () => {
     const input = findTestWrapper(wrapper, 'input')
     expect(input.length).toBe(1)
   })
+
+  it('input 框失去焦点时，对外触发 reset 事件', () => {
+    wrapper = mount(UndoList as any, {
+      props: {
+        undoList: [{
+          status: 'input',
+          value: 1
+        }, {
+          status: 'div',
+          value: 2
+        }, {
+          status: 'div',
+          value: 3
+        }]
+      }
+    })
+    const input = findTestWrapper(wrapper, 'input').at(0)
+    input.trigger('blur')
+    expect(wrapper.emitted().reset).toBeTruthy()
+  })
 })
