@@ -63,11 +63,7 @@ const handleInputBlur = () => {
 }
 
 const handleInputChange = (e: any, key: number): void => {
-  console.log('handleInputChange')
-  console.log(e)
   const value = e.target.value
-  console.log(value, key)
-
   emit('change', {
     value, key
   })
