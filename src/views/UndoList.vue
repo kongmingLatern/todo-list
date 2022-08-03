@@ -20,11 +20,12 @@
     v-if="item.status === 'input'"
     :value="item.value"
     @blur="handleInputBlur"
+    @change="handleInputChange($event, key)"
      />
     <span v-else>{{ item.value }}</span>
      <span
      data-test="delete-button"
-     @click="deleteItem(key)"
+     @click="deleteItem(key) "
      class="right hover"
      >delete this</span>
      </li>
@@ -42,24 +43,31 @@ defineProps<{
   undoList: UndoListType[]
 }>()
 
-const emits = defineEmits<{
+const emit = defineEmits<{
   (e: 'delete', key: number): void,
   (e: 'changeStatus', key: number): void,
-  (e: 'reset'): void
+  (e: 'reset'): void,
+  (e: 'change', obj: Record<string | number, any>): void
 }>()
 
 const deleteItem = (num: number) => {
-  emits('delete', num)
+  emit('delete', num)
 }
 
 const changeStatus = (num: number) => {
-  emits('changeStatus', num)
+  emit('changeStatus', num)
 }
 
 const handleInputBlur = () => {
-  emits('reset')
+  emit('reset')
 }
 
+const handleInputChange = (e: any, key: number): void => {
+  const value = e.target.value
+  emit('change', {
+    value, key
+  })
+}
 </script>
 
 <style lang="less" scoped>
