@@ -148,19 +148,23 @@ describe('UndoList', () => {
       props: {
         undoList: [{
           status: 'input',
-          value: 1
+          // NOTE: THIS IS INIT VALUE
+          // value: 1,
+          // NOTE: THIS IS CHANGE VALUE
+          value: '123'
         }]
       }
     })
-    // const input = findTestWrapper(wrapper, 'input').at(0)
-    // input.trigger('change', {
-    //   event: {
-    //     target: {
-    //       value: '123'
-    //     }
-    //   },
-    //   key: 0
-    // })
+    const input = findTestWrapper(wrapper, 'input').at(0)
+    input.trigger('change', {
+      event: {
+        // [vue - utils - test]'s bug , If you use target {}, then will mention error...
+        target: {
+          value: '123'
+        }
+      },
+      key: 0
+    })
     // console.log(wrapper.emitted().change)
 
     expect(wrapper.emitted().change).toBeTruthy()
