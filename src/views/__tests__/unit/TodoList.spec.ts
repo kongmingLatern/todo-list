@@ -100,4 +100,28 @@ describe('emit', () => {
       value: 3
     }])
   })
+  it('resetStatus 方法执行后，UndoList 内容发生变化', () => {
+    const { undoList, resetStatus } = setupState
+    undoList.push({
+      status: 'div',
+      value: 1
+    }, {
+      status: 'input',
+      value: 2
+    }, {
+      status: 'div',
+      value: 3
+    })
+    resetStatus()
+    expect(undoList).toEqual([{
+      status: 'div',
+      value: 1
+    }, {
+      status: 'div',
+      value: 2
+    }, {
+      status: 'div',
+      value: 3
+    }])
+  })
 })
