@@ -105,8 +105,27 @@ describe('UndoList', () => {
         }]
       }
     })
-    const list = wrapper.find('[data-test="list"]')
+    const list = findTestWrapper(wrapper, 'list').at(0)
     list.trigger('click')
     expect(wrapper.emitted('changeStatus')).toBeTruthy()
+  })
+
+  it('列表项中显示一个输入框，两个正常显示内容', () => {
+    wrapper = mount(UndoList as any, {
+      props: {
+        undoList: [{
+          status: 'input',
+          value: 1
+        }, {
+          status: 'div',
+          value: 2
+        }, {
+          status: 'div',
+          value: 3
+        }]
+      }
+    })
+    const input = findTestWrapper(wrapper, 'input')
+    expect(input.length).toBe(1)
   })
 })

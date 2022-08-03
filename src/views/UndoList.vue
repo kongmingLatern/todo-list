@@ -30,6 +30,7 @@ interface UndoListType {
   status?: string,
   value?: string
 }
+
 defineProps<{
   undoList: UndoListType[]
 }>()
