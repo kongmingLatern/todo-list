@@ -74,7 +74,7 @@ describe('emit', () => {
     }])
   })
 
-  it('TodoList 当 触发 changeStatus 事件的时候 去 执行 changeStatus', () => {
+  it('TodoList 当 触发 changeStatus 事件的时候 去 执行 handleStatus', () => {
     let { undoList } = setupState
     undoList.push({
       status: 'div',
