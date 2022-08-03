@@ -152,17 +152,21 @@ describe('UndoList', () => {
         }]
       }
     })
-    const input = findTestWrapper(wrapper, 'input').at(0)
-    input.trigger('change', {
-      key: 0,
-      value: 123
-    })
-    console.log(wrapper.emitted().change)
+    // const input = findTestWrapper(wrapper, 'input').at(0)
+    // input.trigger('change', {
+    //   event: {
+    //     target: {
+    //       value: '123'
+    //     }
+    //   },
+    //   key: 0
+    // })
+    // console.log(wrapper.emitted().change)
 
     expect(wrapper.emitted().change).toBeTruthy()
     expect((wrapper.emitted().change[0] as any)[0]).toEqual({
       key: 0,
-      value: 123
+      value: '123'
     })
   })
 })

@@ -6,6 +6,7 @@
   @delete="deleteItem"
   @changeStatus="handleStatus"
   @reset="resetStatus"
+  @change="changeValue"
   />
   <h3 class="title ending">已结束的活动</h3>
   <!-- <UndoList :undoList="undoList" @delete="deleteItem"/> -->
@@ -21,6 +22,10 @@ interface UndoListType {
   value?: string
 }
 
+interface InputType {
+  key?: number,
+  value?: string
+}
 const undoList: UndoListType[] = reactive([])
 
 const addUndoList = (str: string) => {
@@ -49,6 +54,14 @@ const resetStatus = () => {
   undoList.forEach(item => {
     if (item.status === 'input') {
       item.status = 'div'
+    }
+  })
+}
+
+const changeValue = (obj: InputType) => {
+  undoList.some((item, key) => {
+    if (key === obj.key) {
+      item.value = obj.value
     }
   })
 }
