@@ -1,19 +1,26 @@
 <template>
-  <div  class="number m0">
+  <div class="number m0">
     还剩
    <span data-test="count">{{ undoList.length }}</span>
      件
     </div>
-  <ul data-test="todoList" class="ul-container m0">
+  <ul
+  data-test="todoList"
+  class="ul-container m0">
     <li
-     data-test="list"
      v-for="(item, key) in undoList"
      :key="item.status"
-     @click="changeStatus(key)"
+     data-test="list"
      class="mt-10 bb-3 h-50"
+     @click="changeStatus(key)"
      >
     <span class="br-3">{{ key + 1 }}</span>
-    <input data-test="input"  v-if="item.status === 'input'" :value="item.value"/>
+    <input
+    data-test="input"
+    v-if="item.status === 'input'"
+    :value="item.value"
+    @blur="handleInputBlur"
+     />
     <span v-else>{{ item.value }}</span>
      <span
      data-test="delete-button"
@@ -36,8 +43,9 @@ defineProps<{
 }>()
 
 const emits = defineEmits<{
-  (e: 'delete', value: number): void,
-  (e: 'changeStatus', value: number): void,
+  (e: 'delete', key: number): void,
+  (e: 'changeStatus', key: number): void,
+  (e: 'reset'): void
 }>()
 
 const deleteItem = (num: number) => {
@@ -46,6 +54,10 @@ const deleteItem = (num: number) => {
 
 const changeStatus = (num: number) => {
   emits('changeStatus', num)
+}
+
+const handleInputBlur = () => {
+  emits('reset')
 }
 
 </script>

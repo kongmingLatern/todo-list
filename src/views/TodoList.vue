@@ -1,7 +1,12 @@
 <template>
   <Header @add="addUndoList" />
   <h3 class="title loading">正在进行中的活动</h3>
-  <UndoList :undoList="undoList" @delete="deleteItem" @changeStatus="handleStatus"/>
+  <UndoList
+  :undoList="undoList"
+  @delete="deleteItem"
+  @changeStatus="handleStatus"
+  @reset="resetStatus"
+  />
   <h3 class="title ending">已结束的活动</h3>
   <!-- <UndoList :undoList="undoList" @delete="deleteItem"/> -->
 </template>
@@ -38,6 +43,14 @@ const handleStatus = (num: number) => {
 
 const deleteItem = (num: number) => {
   return undoList.splice(num, 1)
+}
+
+const resetStatus = () => {
+  undoList.forEach(item => {
+    if (item.status === 'input') {
+      item.status = 'div'
+    }
+  })
 }
 
 </script>
