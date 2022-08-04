@@ -259,6 +259,9 @@ VueWrapper {
                 },
               },
             },
+            "vFocus": Object {
+              "mounted": [Function],
+            },
           },
           "directives": null,
           "ec": null,
@@ -340,6 +343,9 @@ VueWrapper {
             "addTodoItem": [Function],
             "emit": [Function],
             "inputValue": "",
+            "vFocus": Object {
+              "mounted": [Function],
+            },
           },
           "slots": Object {},
           "sp": null,
@@ -390,6 +396,18 @@ VueWrapper {
                     "children": null,
                     "component": null,
                     "dirs": Array [
+                      Object {
+                        "arg": undefined,
+                        "dir": Object {
+                          "mounted": [Function],
+                        },
+                        "instance": Object {
+                          "hasOwnProperty": [Function],
+                        },
+                        "modifiers": Object {},
+                        "oldValue": undefined,
+                        "value": undefined,
+                      },
                       Object {
                         "arg": undefined,
                         "dir": Object {
@@ -481,6 +499,18 @@ VueWrapper {
                 "children": null,
                 "component": null,
                 "dirs": Array [
+                  Object {
+                    "arg": undefined,
+                    "dir": Object {
+                      "mounted": [Function],
+                    },
+                    "instance": Object {
+                      "hasOwnProperty": [Function],
+                    },
+                    "modifiers": Object {},
+                    "oldValue": undefined,
+                    "value": undefined,
+                  },
                   Object {
                     "arg": undefined,
                     "dir": Object {
