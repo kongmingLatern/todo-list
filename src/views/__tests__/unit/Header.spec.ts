@@ -24,14 +24,14 @@ describe('input', () => {
   })
 
   // 获取到 input 的 value 值
-  it.skip('get input value', () => {
+  it('get input value', () => {
     // 通过 DOM 获取的值
     const value = wrapper.get('input').wrapperElement.value
     expect(value).toBe('')
   })
 
   // 当用户输入值后 input 的 value 值也应当同时改变
-  it.skip("input's value should be changed when user input the value", () => {
+  it("input's value should be changed when user input the value", () => {
     // 假设用户输入了一串值
     input.setValue('this is test value')
     // 获取到用户输入的数据
@@ -40,7 +40,7 @@ describe('input', () => {
   })
 
   // 当用户没有输入内容时输入回车，则不需要做任何操作
-  it.skip("we should't do anything when user just input keyEnter", () => {
+  it("we should't do anything when user just input keyEnter", () => {
     // 输入空内容
     input.setValue('')
     // 然后输入回车
@@ -49,7 +49,7 @@ describe('input', () => {
   })
 
   // 如果输入有内容，并且输入回车，则触发 emit 事件，同时清空 inputValue
-  it.skip('we should trigger emit and then clear inputValue when user input key is pressed', () => {
+  it('we should trigger emit and then clear inputValue when user input key is pressed', () => {
     const value = wrapper.get('input').wrapperElement.value
     input.setValue('anything')
     input.trigger('keyup.enter')
