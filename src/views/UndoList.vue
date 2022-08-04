@@ -16,6 +16,7 @@
      >
     <span class="br-3">{{ key + 1 }}</span>
     <input
+    v-focus
     data-test="input"
     v-if="item.status === 'input'"
     :value="item.value"
@@ -67,6 +68,12 @@ const handleInputChange = (e: any, key: number): void => {
   emit('change', {
     value, key
   })
+}
+const vFocus = {
+  mounted(el: any): void {
+    // 获取input，并调用其focus()方法
+    el.focus()
+  }
 }
 </script>
 
