@@ -3,7 +3,6 @@
     <div class="header-container">
       TodoList
       <input
-      v-focus
       data-test="input"
       v-model="inputValue"
       @keyup.enter="addTodoItem"
@@ -17,7 +16,7 @@
 <script setup lang='ts'>
 import { ref, defineEmits } from 'vue'
 const inputValue = ref<string>('')
-
+// v-focus
 const emit = defineEmits<{
   (e: 'add', value: string): void
 }>()
