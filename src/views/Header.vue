@@ -3,6 +3,7 @@
     <div class="header-container">
       TodoList
       <input
+      v-focus
       data-test="input"
       v-model="inputValue"
       @keyup.enter="addTodoItem"
