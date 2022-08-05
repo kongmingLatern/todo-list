@@ -5,7 +5,7 @@
     已做
     <span
     data-test="count"
-    >0</span>
+    >{{doneList.length}}</span>
     件
   </div>
   <ul
