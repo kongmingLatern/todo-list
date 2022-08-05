@@ -12,8 +12,8 @@ beforeEach(() => {
 })
 describe('UndoList', () => {
   it('UndoList args should be [], count shoule be 0, list length should be 0 too', () => {
-    const countElem = wrapper.findAll('[data-test="count"]')
-    const listItems = wrapper.findAll('[data-test="list"]')
+    const countElem = findTestWrapper(wrapper, 'count')
+    const listItems = findTestWrapper(wrapper, 'list')
 
     expect(wrapper.html()).toContain([])
     expect(Number.parseInt(countElem[0].text())).toBe(0)
