@@ -55,8 +55,6 @@ const deleteItem = (num: number) => {
   doneList.push({
     value: (undoList[num].value) as string
   })
-  console.log(doneList)
-
   return undoList.splice(num, 1)
 }
 
