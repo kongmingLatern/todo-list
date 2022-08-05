@@ -9,13 +9,14 @@
   @change="changeValue"
   />
   <h3 class="title ending">已结束的活动</h3>
-  <!-- <UndoList :undoList="undoList" @delete="deleteItem"/> -->
+  <DoneList :doneList="doneList"/>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue'
 import Header from '@/views/Header.vue'
 import UndoList from '@/views/UndoList.vue'
+import DoneList from '@/views/DoneList.vue'
 
 interface UndoListType {
   status?: string,
@@ -26,7 +27,11 @@ interface InputType {
   key?: number,
   value?: string
 }
+interface DoneListType {
+  value: string
+}
 const undoList: UndoListType[] = reactive([])
+const doneList: DoneListType[] = reactive([])
 
 const addUndoList = (str: string) => {
   undoList.push({
@@ -47,6 +52,11 @@ const handleStatus = (num: number) => {
 }
 
 const deleteItem = (num: number) => {
+  doneList.push({
+    value: (undoList[num].value) as string
+  })
+  console.log(doneList)
+
   return undoList.splice(num, 1)
 }
 
