@@ -10,6 +10,7 @@
   </div>
   <ul
   data-test="ul"
+  class="ul-container m0"
   >
   <li
   v-for="(item, key) in doneList"
@@ -22,19 +23,27 @@
      <span
      data-test="delete-button"
      class="right hover"
-     >delete this</span>
+     @click="deleteItem(key)"
+     >删除</span>
     </li>
   </ul>
 </template>
 
 <script setup lang='ts'>
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 interface DoneListType {
   value: string
 }
 defineProps<{
   doneList: DoneListType[]
 }>()
+const emit = defineEmits<{
+  (e: 'deleteDone', key: number): void
+}>()
+
+const deleteItem = (num: number) => {
+  emit('deleteDone', num)
+}
 </script>
 
 <style lang="less" scoped >
@@ -44,6 +53,7 @@ defineProps<{
 
 .ul-container {
   width: 700px;
+  text-decoration-line: line-through;
 }
 .number {
   width: 700px;
@@ -63,6 +73,7 @@ defineProps<{
 }
 .bb-3 {
   border: 1px solid #ccc;
+  background-color: #fde9e9;
 }
 .h-50 {
   height: 20px;

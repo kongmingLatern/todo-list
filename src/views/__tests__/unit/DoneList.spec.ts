@@ -71,4 +71,22 @@ describe('DoneList', () => {
     expect(listItems.length).toBe(3)
     expect(deleteBtns.length).toBe(3)
   })
+  it('DoneList 删除按钮被点击时，对外需要触发删除事件', () => {
+    wrapper = mount(DoneList as any, {
+      props: {
+        doneList: [{
+          value: '123'
+        }, {
+          value: '456'
+        }, {
+          value: '567'
+        }]
+      }
+    })
+
+    // add => 触发 trigger event
+    const deleteButton: any = findTestWrapper(wrapper, 'delete-button').at(1)
+    deleteButton.trigger('click')
+    expect(wrapper.emitted().deleteDone).toBeTruthy()
+  })
 })

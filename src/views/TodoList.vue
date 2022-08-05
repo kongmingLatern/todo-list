@@ -9,7 +9,10 @@
   @change="changeValue"
   />
   <h3 class="title ending">已结束的活动</h3>
-  <DoneList :doneList="doneList"/>
+  <DoneList
+  :doneList="doneList"
+  @deleteDone="removeItem"
+  />
 </template>
 
 <script setup lang="ts">
@@ -74,6 +77,9 @@ const changeValue = (obj: InputType) => {
   })
 }
 
+const removeItem = (num: number) => {
+  return doneList.splice(num, 1)
+}
 </script>
 
 <style lang='less' scoped>
