@@ -1,8 +1,8 @@
 <template>
+  <div class="undoList">
   <div class="number m0">
-    还剩
-   <span data-test="count">{{ undoList.length }}</span>
-     件
+    正在进行
+   <span data-test="count" class="count">{{ undoList.length }}</span>
     </div>
   <ul
   data-test="todoList"
@@ -11,7 +11,7 @@
      v-for="(item, key) in undoList"
      :key="item.status"
      data-test="list"
-     class="mt-10 bb-3 h-50"
+     class="item"
      @click="changeStatus(key)"
      >
     <span class="br-3">{{ key + 1 }}</span>
@@ -31,6 +31,7 @@
      >delete this</span>
      </li>
   </ul>
+  </div>
 </template>
 
 <script setup lang='ts'>
@@ -86,11 +87,15 @@ const vFocus = {
   width: 700px;
 }
 .number {
-  width: 700px;
-  margin-bottom: 30px;
+  // width: 700px;
+  // margin-bottom: 30px;
+  // font-weight: 700;
+  // text-align: left;
+  // color: #2369ff;
+  line-height: 30px;
+  font-size: 24px;
   font-weight: 700;
-  text-align: left;
-  color: #2369ff;
+  margin: 10px 0;
 }
 .right {
   float: right;
@@ -119,4 +124,29 @@ li {
   border-right: 1px solid #000;
   margin-right: 10px;
 }
+
+.undoList {
+  width: 600px;
+  margin: 0 auto;
+}
+.count {
+  float: right;
+  display: block;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  color: #000;
+  margin-top: 5px;
+}
+.item {
+  line-height: 32px;
+  font-size: 14px;
+  background-color: #fff;
+  border-left: 5px solid #629a9a;
+  border-radius: 3px;
+ }
 </style>

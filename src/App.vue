@@ -11,4 +11,7 @@ import TodoList from '@/views/TodoList.vue'
   padding: 0;
   margin: 0;
 }
+body {
+  background-color: #cdcdcd;
+}
 </style>
