@@ -14,7 +14,6 @@
      class="item"
      @click="changeStatus(key)"
      >
-    <span class="br-3">{{ key + 1 }}</span>
     <input
     v-focus
     data-test="input"
@@ -27,8 +26,8 @@
      <span
      data-test="delete-button"
      @click="deleteItem(key) "
-     class="right hover"
-     >delete this</span>
+     class="delete"
+     >-</span>
      </li>
   </ul>
   </div>
@@ -79,50 +78,18 @@ const vFocus = {
 </script>
 
 <style lang="less" scoped>
-.m0 {
-  margin: 0 auto;
-}
-
 .ul-container {
   width: 700px;
 }
 .number {
-  // width: 700px;
-  // margin-bottom: 30px;
-  // font-weight: 700;
-  // text-align: left;
-  // color: #2369ff;
   line-height: 30px;
   font-size: 24px;
   font-weight: 700;
   margin: 10px 0;
 }
-.right {
-  float: right;
-}
-.right:hover {
-  color: red;
-}
-.mt-10 {
-  margin-top: 20px;
-}
-.bb-3 {
-  border: 1px solid #ccc;
-}
-.h-50 {
-  height: 20px;
-  line-height: 20px;
-  padding: 10px;
-}
+
 li {
   list-style: none;
-}
-.br-3 {
-  width: 30px;
-  height: 30px;
-  padding: 10px;
-  border-right: 1px solid #000;
-  margin-right: 10px;
 }
 
 .undoList {
@@ -148,5 +115,25 @@ li {
   background-color: #fff;
   border-left: 5px solid #629a9a;
   border-radius: 3px;
- }
+  text-indent: 10px;
+  margin-bottom: 10px;
+  }
+.delete {
+  display: block;
+  float: right;
+  color: #000;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-right: 10px;
+  margin-top: 5px;
+  text-indent: 0;
+  transition: all 1s ease-out;
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
 </style>
