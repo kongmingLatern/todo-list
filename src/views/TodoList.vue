@@ -1,6 +1,6 @@
 <template>
   <Header @add="addUndoList" />
-  <h3 class="title loading">正在进行中的活动</h3>
+  <!-- <h3 class="title loading">正在进行中的活动</h3> -->
   <UndoList
   :undoList="undoList"
   @delete="deleteItem"
@@ -88,9 +88,9 @@ const removeItem = (num: number) => {
   margin: 30px auto;
   text-align: left;
 }
-.loading {
-  color: #ff004f
-}
+// .loading {
+//   color: #ff004f
+// }
 
 .ending {
   color: gray;
