@@ -1,6 +1,6 @@
 <template>
   <div class="undoList">
-  <div class="number m0">
+  <div class="number">
     正在进行
    <span data-test="count" class="count">{{ undoList.length }}</span>
     </div>

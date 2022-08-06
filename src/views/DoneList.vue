@@ -1,12 +1,13 @@
 <template>
+  <div class="doneList">
   <div
-  class="number m0"
+  class="number"
   >
-    已做
+  已经完成
     <span
     data-test="count"
+    class="count"
     >{{doneList.length}}</span>
-    件
   </div>
   <ul
   data-test="ul"
@@ -15,18 +16,18 @@
   <li
   v-for="(item, key) in doneList"
   :key="key"
-  class="mt-10 bb-3 h-50"
+  class="item"
   data-test="list"
   >
-    <span class="br-3">{{ key + 1 }}</span>
     <span>{{ item.value }}</span>
      <span
      data-test="delete-button"
-     class="right hover"
+     class="delete"
      @click="deleteItem(key)"
-     >删除</span>
+     >-</span>
     </li>
   </ul>
+  </div>
 </template>
 
 <script setup lang='ts'>
@@ -47,48 +48,62 @@ const deleteItem = (num: number) => {
 </script>
 
 <style lang="less" scoped >
-.m0 {
-  margin: 0 auto;
-}
 
 .ul-container {
   width: 700px;
-  text-decoration-line: line-through;
 }
 .number {
-  width: 700px;
-  margin-bottom: 30px;
+  line-height: 30px;
+  font-size: 24px;
   font-weight: 700;
-  text-align: left;
-  color: #2369ff;
+  margin: 10px 0;
 }
-.right {
-  float: right;
-}
-.right:hover {
-  color: red;
-}
-.mt-10 {
-  margin-top: 20px;
-}
-.bb-3 {
-  border: 1px solid #ccc;
-  background-color: #fde9e9;
-}
-.h-50 {
-  height: 20px;
-  line-height: 20px;
-  padding: 10px;
-}
+
 li {
   list-style: none;
 }
-.br-3 {
-  width: 30px;
-  height: 30px;
-  padding: 10px;
-  border-right: 1px solid #000;
-  margin-right: 10px;
-}
 
+.doneList {
+  width: 600px;
+  margin: 0 auto;
+}
+.count {
+  float: right;
+  display: block;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  color: #000;
+  margin-top: 5px;
+}
+.item {
+  line-height: 32px;
+  font-size: 14px;
+  background-color: #fff;
+  border-left: 5px solid #629a9a;
+  border-radius: 3px;
+  text-indent: 10px;
+  margin-bottom: 10px;
+  }
+.delete {
+  display: block;
+  float: right;
+  color: #000;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-right: 10px;
+  margin-top: 5px;
+  text-indent: 0;
+  transition: all 1s ease-out;
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
 </style>
