@@ -11,7 +11,7 @@
   </div>
   <ul
   data-test="ul"
-  class="ul-container m0"
+  class="ul-container"
   >
   <li
   v-for="(item, key) in doneList"

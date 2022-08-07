@@ -6,7 +6,7 @@
     </div>
   <ul
   data-test="todoList"
-  class="ul-container m0">
+  class="ul-container">
     <li
      v-for="(item, key) in undoList"
      :key="item.status"
