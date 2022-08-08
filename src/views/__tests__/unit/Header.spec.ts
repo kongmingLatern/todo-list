@@ -6,7 +6,7 @@ let input: DOMWrapper<any>
 
 beforeAll(() => {
   wrapper = mount(Header)
-  input = wrapper.find('[data-test="input"]')
+  input = wrapper.find('[data-test="header-input"]')
 })
 
 describe('notice', () => {
