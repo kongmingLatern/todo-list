@@ -18,7 +18,7 @@ describe('TodoList test', () => {
   it('we should render it correctly', () => {
     expect(todoList).toBeTruthy()
   })
-  it('we should have no element before user input', () => {
+  it('we should have no element before user header-input', () => {
     const el = todoList.wrapperElement
     expect(el.children.length).toBe(0)
   })
@@ -26,7 +26,7 @@ describe('TodoList test', () => {
 
 describe('emit', () => {
   // send emit event
-  it('we should trigger emit event when user input keyup', () => {
+  it('we should trigger emit event when user header-input keyup', () => {
     const header = wrapper.findComponent(Header)
     const { undoList } = setupState
     header.vm.$emit('add', 'one thing')
@@ -37,7 +37,7 @@ describe('emit', () => {
   })
 
   // use emit by function
-  it('we should add an active after user input something', () => {
+  it('we should add an active after user header-input something', () => {
     const { undoList, addUndoList } = setupState
     addUndoList('active1')
     expect(undoList).toEqual([{

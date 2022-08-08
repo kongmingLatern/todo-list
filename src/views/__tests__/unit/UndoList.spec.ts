@@ -13,7 +13,7 @@ beforeEach(() => {
 describe('UndoList', () => {
   it('UndoList args should be [], count shoule be 0, list length should be 0 too', () => {
     const countElem = findTestWrapper(wrapper, 'count')
-    const listItems = findTestWrapper(wrapper, 'list')
+    const listItems = findTestWrapper(wrapper, 'list-item')
 
     expect(wrapper.html()).toContain([])
     expect(Number.parseInt(countElem[0].text())).toBe(0)
@@ -36,7 +36,7 @@ describe('UndoList', () => {
     })
 
     const countElem = findTestWrapper(wrapper, 'count')
-    const listItems = findTestWrapper(wrapper, 'list')
+    const listItems = findTestWrapper(wrapper, 'list-item')
 
     expect(wrapper.html()).toContain([])
     expect(Number.parseInt(countElem[0].text())).toBe(3)
@@ -59,7 +59,7 @@ describe('UndoList', () => {
     })
 
     const countElem = findTestWrapper(wrapper, 'count')
-    const listItems = findTestWrapper(wrapper, 'list')
+    const listItems = findTestWrapper(wrapper, 'list-item')
 
     // add
     const deleteBtns = findTestWrapper(wrapper, 'delete-button')
@@ -105,7 +105,7 @@ describe('UndoList', () => {
         }]
       }
     })
-    const list = findTestWrapper(wrapper, 'list').at(0)
+    const list = findTestWrapper(wrapper, 'list-item').at(0)
     list.trigger('click')
     expect(wrapper.emitted('changeStatus')).toBeTruthy()
   })

@@ -10,7 +10,7 @@
     <li
      v-for="(item, key) in undoList"
      :key="item.status"
-     data-test="list"
+     data-test="list-item"
      class="item"
      @click="changeStatus(key)"
      >
