@@ -16,19 +16,16 @@ it(`
   inputElem.trigger('change')
   inputElem.trigger('keyup.enter')
 
-  const { undoList } = wrapper.vm.$.setupState
-
   const wrap = mount(UndoList as any, {
     props: {
-      undoList
+      undoList: (wrapper.vm.$ as any).setupState.undoList
     }
   })
-  console.log(wrap.vm.$.props)
 
-  // const { undoList: list} =  wrap.vm.$.props
+  const count = findTestWrapper(wrap, 'count')
+  const listItems = findTestWrapper(wrap, 'list-item')
 
-  const listItems = findTestWrapper(wrapper, 'list-item')
-
+  expect(count.length).toBe(1)
   expect(listItems.length).toBe(1)
-  expect(listItems.at(0).text()).toContain('')
+  expect(listItems.at(0).text()).toContain('something')
 })
